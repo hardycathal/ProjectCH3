@@ -1,12 +1,11 @@
 package ie.atu.projectch3.controller;
 
 import ie.atu.projectch3.dto.Menu;
+import ie.atu.projectch3.entity.OrderItem;
 import ie.atu.projectch3.service.OrderItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,10 +17,12 @@ public class OrderItemController {
         this.orderItemService = orderItemService;
     }
 
-    @GetMapping("/items")
-    public ResponseEntity<List<Menu>> showItems() {
-        return new ResponseEntity<>(orderItemService.showItems(), HttpStatus.OK);
+    @GetMapping("/{id}")
+    public ResponseEntity<List<OrderItem>> getItemsById(@PathVariable Long id) {
+        List<OrderItem> items = orderItemService.getItemsByOrderId(id);
+        return new ResponseEntity<>(items, HttpStatus.OK);
     }
+
 
 
 }
