@@ -52,4 +52,8 @@ public class OrderService {
     }
 
 
+    public void deleteOrderById(Long id) {
+        orderRepo.deleteById(id);
+    }
+
 }
