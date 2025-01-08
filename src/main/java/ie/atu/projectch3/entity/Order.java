@@ -16,6 +16,7 @@ public class Order {
     private Long customerId;
     private String customerName;
     private String customerEmail;
+    private String customerPhone;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
@@ -25,13 +26,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(Long id, Double totalPrice, List<OrderItem> items, String customerEmail, String customerName, Long customerId) {
+    public Order(Long id, Double totalPrice, List<OrderItem> items, String customerEmail, String customerName, String customerPhone, Long customerId) {
         this.id = id;
         this.totalPrice = totalPrice;
         this.items = items;
         this.customerEmail = customerEmail;
         this.customerName = customerName;
         this.customerId = customerId;
+        this.customerPhone = customerPhone;
     }
 
     public Long getId() {
@@ -80,6 +82,14 @@ public class Order {
 
     public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public String getCustomerPhone() {
+        return customerPhone;
     }
 }
 
